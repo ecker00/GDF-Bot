@@ -1,0 +1,22 @@
+{
+  "name": "gdf-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot for the Game Dev Friends community",
+  "main": "./dist/app.js",
+  "scripts": {
+    "start": "node -r dotenv/config ./dist/app.js",
+    "build": "tsc",
+    "dev": "ts-node-dev -r dotenv/config ./src/app.ts"
+  },
+  "author": "Mods of GDF",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.5"
+  }
+}

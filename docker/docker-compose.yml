@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  gdf-bot:
+    container_name: "gdf-bot"
+    image: node:13
+    restart: always
+    command: npm start
+    working_dir: /app
+    volumes:
+      - ../:/app/
+    #ports:
+    #  - "9229:9229" # Node debug port
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "5"
