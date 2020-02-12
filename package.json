@@ -9,7 +9,7 @@
     "dev": "ts-node-dev -r dotenv/config ./src/app.ts"
   },
   "author": "Mods of GDF",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0"
