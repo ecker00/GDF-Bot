@@ -1,14 +1,13 @@
-# Game Dev Friends Bot
+# **Game Dev Friends Bot**
 
 A Discord bot built for the Game Dev Friends community [https://gamedevfriends.com/](). To give out milestone badges for the #100DaysOfGameDev challenge and automate roles in the Discord community.
 
-Note: this bot is only designed to run on one discord server at the time.
+**Note:** this bot is only designed to run on one discord server at the time.
 
-### **Invite bot**
-To invite the bot to a server use:
-https://discordapp.com/oauth2/authorize?client_id=BOT_CLIENT_ID&scope=bot&permissions=8
+### **Todo**
+- Make daily.ts find out if you've reached a daily milestone and send a PM with the badge attached.
 
-### **Setup**
+# **Server Setup**
 Make a copy of `bot-config-example.js` named `bot-config.js` to configure the bot.
 
 ### **Run in production**
@@ -26,5 +25,13 @@ npm i
 npm run dev
 ```
 
-### Todo
-- Make daily.ts find out if you've reached a daily milestone and send a PM with the badge attached.
+# **Discord Setup**
+
+### **Invite bot**
+
+Invite the bot to your server (replace BOT_CLIENT_ID):
+
+https://discordapp.com/oauth2/authorize?client_id=BOT_CLIENT_ID&scope=bot&permissions=8
+
+### **Set bot roles**
+![Bot role](readme-access.png)
