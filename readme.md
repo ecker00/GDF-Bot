@@ -8,6 +8,9 @@ Note: this bot is only designed to run on one discord server at the time.
 To invite the bot to a server use:
 https://discordapp.com/oauth2/authorize?client_id=BOT_CLIENT_ID&scope=bot&permissions=8
 
+### **Setup**
+Make a copy of `bot-config-example.js` named `bot-config.js` to configure the bot.
+
 ### **Run in production**
 ```sh
 npm i
