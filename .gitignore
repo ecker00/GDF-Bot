@@ -8,3 +8,6 @@
 # Ignore config/env
 /bot-config.js
 
+# Ignore custom images
+/src/images/*
+!/src/images/.gitkeep

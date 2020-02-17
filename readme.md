@@ -4,9 +4,6 @@ A Discord bot built for the Game Dev Friends community [https://gamedevfriends.c
 
 **Note:** this bot is only designed to run on one discord server at the time.
 
-### **Todo**
-- Make daily.ts find out if you've reached a daily milestone and send a PM with the badge attached.
-
 # **Server Setup**
 Make a copy of `bot-config-example.js` named `bot-config.js` to configure the bot.
 

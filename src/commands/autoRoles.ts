@@ -55,6 +55,8 @@ class AutoRoles {
     } else {
       message.react('❌'); // No valid roles requested
     }
+    
+    return;
   }
 }
 
