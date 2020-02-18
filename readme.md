@@ -2,7 +2,9 @@
 
 A Discord bot built for the Game Dev Friends community [https://gamedevfriends.com/](). To give out milestone badges for the #100DaysOfGameDev challenge and automate roles in the Discord community.
 
-**Note:** this bot is only designed to run on one discord server at the time.
+**Notes**
+- This bot is only designed to run on one discord server at the time.
+- AutoRoles can only work with role names that don't have spaces.
 
 # **Server Setup**
 Make a copy of `bot-config-example.js` named `bot-config.js` to configure the bot.
