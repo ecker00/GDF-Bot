@@ -14,18 +14,15 @@ client.on("error", err => console.error(err));
 // Message router
 client.on("message", message => {
   if (!message.guild) return; // Only operate with guild messages
+  if (message.author.bot) return; // Ignore bot messages
   const channel = message.guild.channels.get(message.channel.id);
 
   switch (channel.name) {
     case autoRoles.listenChannel:
       autoRoles.execute(message);
-      break;
 
     case dailyChallenge.listenChannel:
       dailyChallenge.execute(message);
-
-    default:
-      break;
   }
 });
 

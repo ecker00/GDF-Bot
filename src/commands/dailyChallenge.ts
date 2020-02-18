@@ -35,60 +35,65 @@ class DailyChallenge {
   }
 
   execute(message: Discord.Message): void {
-    // HOW TO DO MULTI LINE STUFF?!?
+    const days: { num: number; content: string }[] = [];
 
     // Parse input
-    const meta = message.content.match(
-      /^Day\s*(?<day>\d+)\s*:\s*(?<content>.*)/im
-    );
-    if (!meta) {
+    const lines = message.content.split("\n");
+    lines.forEach(line => {
+      const meta = line.match(/^Day\s*(?<num>\d+)\s*:\s*(?<content>.*)/i);
+      if (meta && meta.groups) {
+        const num = parseInt(meta.groups.num);
+
+        // Skip duplicate days in same message
+        if (!days.some(d => d.num === num)) {
+          days.push({
+            num: num,
+            content: meta.groups.content
+          });
+        }
+      }
+    });
+
+    // No days in input
+    if (!days.length) {
       message.react("❌");
       return;
     }
 
-    const day = parseInt(meta.groups.day);
-    if (day < 1 || day > 100000) {
-      message.react("❌");
-      return;
-    }
+    // Respond to each day
+    days.forEach(day => {
+      const milestone = this.milestones.find(m => m.day === day.num);
 
-    const milestone = this.milestones.find(m => m.day === day);
+      // Send PM with badge
+      if (milestone) {
+        const root = path.dirname(require.main.filename);
+        const filePath = path.join(root, milestone.image);
+        const fileName = path.basename(milestone.image);
+        message.author.send(milestone.personalMessage, {
+          embed: {
+            thumbnail: {
+              url: `attachment://${fileName}`
+            }
+          },
+          files: [{ attachment: filePath, name: fileName }]
+        });
+      }
 
-    // Send PM with badge
-    if (milestone && false) {
-      const root = path.dirname(require.main.filename);
-      const filePath = path.join(root, milestone.image);
-      const fileName = path.basename(milestone.image);
-      message.author.send(milestone.personalMessage, {
-        embed: {
-          thumbnail: {
-            url: `attachment://${fileName}`
-          }
-        },
-        files: [
-          {
-            attachment: filePath,
-            name: fileName
-          }
-        ]
-      });
-    }
+      // Send response channel celebration
+      if (milestone) {
+        const reply = milestone.publicMessage.replace(
+          "%s",
+          `${message.author.toString()}`
+        );
+        const replyChannel = message.guild.channels.find(
+          c => c.name === this.responseChannel
+        ) as Discord.TextChannel;
+        replyChannel.send(reply);
+      }
 
-    // Send response channel celebration
-    if (milestone) {
-      const reply = milestone.publicMessage.replace(
-        "%s",
-        `<@user ${message.author.id}>`
-      );
-      const replyChannel = message.guild.channels.find(
-        c => c.name === this.responseChannel
-      ) as Discord.TextChannel;
-      replyChannel.send(reply);
-    }
-
-    // React to original message
-    message.react(milestone ? "⭐" : "❤");
-
+      // React to original message
+      message.react(milestone ? "⭐" : "❤");
+    });
     return;
   }
 }
