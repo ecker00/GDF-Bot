@@ -9,14 +9,17 @@ class AutoRoles {
 
   constructor() {
     this.listenChannel = config.listenChannel;
-    this.roleNames = config.availableRoles;
+    this.roleNames = config.availableRoles.map(r => r.toLowerCase());
   }
 
   execute(message: Discord.Message): void {
     // Validate and parse input
     if (!message.content.startsWith("!")) return;
     const newRoles: Discord.Role[] = [];
-    const reqRoles = message.content.replace(/\!/g, "").split(/\s+/);
+    const reqRoles = message.content
+      .toLowerCase()
+      .replace(/\!/g, "")
+      .split(/\s+/);
     if (!reqRoles.length) return;
 
     let alreadyHasRole = false;
