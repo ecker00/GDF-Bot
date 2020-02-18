@@ -40,7 +40,7 @@ class DailyChallenge {
     // Parse input
     const lines = message.content.split("\n");
     lines.forEach(line => {
-      const meta = line.match(/^Day\s*(?<num>\d+)\s*:\s*(?<content>.*)/i);
+      const meta = line.match(/^Day\s*(?<num>\d+)[:\-\.\s]+(?<content>.*)/i);
       if (meta && meta.groups) {
         const num = parseInt(meta.groups.num);
 
