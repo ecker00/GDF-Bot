@@ -34,3 +34,6 @@ https://discordapp.com/oauth2/authorize?client_id=BOT_CLIENT_ID&scope=bot&permis
 
 ### **Set bot roles**
 ![Bot role](readme-access.png)
+
+# Todo
+- Test if dailyChallenge supports bolding / italic day formatting
