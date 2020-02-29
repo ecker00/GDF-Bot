@@ -4,8 +4,6 @@ import Discord from "discord.js";
 import botConfig from "../../bot-config";
 const config = botConfig.dailyChallenge;
 
-// TODO: Test if it supports bolding / italic day formatting?
-
 /*
 Example of supported inputs:
   Day 40: My text
@@ -67,7 +65,7 @@ class DailyChallenge {
       const milestone = this.milestones.find(m => m.day === day.num);
 
       // Send PM with badge
-      if (milestone) {
+      if (milestone?.personalMessage) {
         const root = path.dirname(require.main.filename);
         const filePath = path.join(root, milestone.image);
         const fileName = path.basename(milestone.image);
@@ -82,7 +80,7 @@ class DailyChallenge {
       }
 
       // Send response channel celebration
-      if (milestone) {
+      if (milestone?.publicMessage) {
         const reply = milestone.publicMessage.replace(
           "%s",
           `${message.author.toString()}`
