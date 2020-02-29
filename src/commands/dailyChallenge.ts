@@ -4,7 +4,7 @@ import Discord from "discord.js";
 import botConfig from "../../bot-config";
 const config = botConfig.dailyChallenge;
 
-// TODO: Add support for multiline!
+// TODO: Test if it supports bolding / italic day formatting?
 
 /*
 Example of supported inputs:
@@ -14,6 +14,8 @@ Example of supported inputs:
   Day 040: My text
   Day 40 My text
   Day 100 (woot woot): My name is Pyan.
+  *Day 147:* Fixed some bugs
+  **Day 147:** Fixed some bugs
 */
 
 interface Milestone {
